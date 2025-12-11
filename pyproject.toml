@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+histology_features = "histology_features.main:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["histology_features"]
+exclude = [""]
+namespaces = false
+
+[project]
+name = "histology_features"
+description = "Tools to extract features from histology images"
+requires-python = ">=3.10"
+dynamic = ["version"]
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+xfail_strict = true
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+atomic = true
+profile = "black"
+line_length = 88
+
+[tool.ruff]
+line-length = 88
+lint.ignore-init-module-imports = true
+lint.extend-select = ["E501"]
